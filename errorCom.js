@@ -43,18 +43,17 @@ class ErrorCom {
     el.style.transition = "all 2s cubic-bezier(0.82, 0.02, 0.36, 1.02)";
 
     el.style.opacity = "0";
-    el.firstChild.style.transform = "translate(0, 50px)";
+    el.style.transform = "translate(0, 20px)";
     this.ids.push(setTimeout(() => {
       el.style.opacity = "1";
-    }, 400));
+      el.style.transform = "translate(0, 0)";
+    }, 100))
     this.ids.push(setTimeout(() => {
-      el.firstChild.style.transform = "translate(0, 0)";
-    }, 10));
-    this.ids.push(setTimeout(() => {
-      el.style.opacity = "0";
+      el.style.transform = "translate(0, 0)";
     }, 4000));
     this.ids.push(setTimeout(() => {
-      el.firstChild.style.transform = "translate(0, 50px)";
+      el.style.opacity = "0";
+      el.style.transform = "translate(0, 20px)";
       this.running = false;
     }, 4400));
   };
