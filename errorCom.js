@@ -29,7 +29,7 @@ class ErrorCom {
   createError = () => {
     this.setPosition();
     const div = document.createElement("div");
-    div.style.position = "absolute";
+    div.style.position = "fixed";
     const span = document.createElement("span");
     span.innerText = this.message;
     div.appendChild(span);
