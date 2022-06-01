@@ -5,7 +5,7 @@ class ErrorCom {
     this.ids = [];
   }
   lunch = (text, isProvided = false, pos) => {
-    Array(...this.ids).forEach((x)=>{
+    Array(...this.ids).forEach((x) => {
       clearTimeout(x);
     });
     this.ids.splice(0, this.ids.length);
@@ -16,10 +16,10 @@ class ErrorCom {
     el.style.top = this.y;
     el.style.transform = `translate(${this.left}, ${this.top})`;
     document.body.appendChild(el);
-    
+
     this.animate();
   };
-  setPosition = (pos = { x: "50%", y: "50%", left: "-50%", top: "-50%" }) => {
+  setPosition = (pos = { x: '50%', y: '50%', left: '-50%', top: '-50%' }) => {
     const { x, y, left, top } = pos;
     this.x = x;
     this.y = y;
@@ -28,34 +28,29 @@ class ErrorCom {
   };
   createError = () => {
     this.setPosition();
-    const div = document.createElement("div");
-    div.style.position = "fixed";
-    const span = document.createElement("span");
+    const div = document.createElement('div');
+    div.style.position = 'fixed';
+    const span = document.createElement('span');
     span.innerText = this.message;
     div.appendChild(span);
     return div;
   };
   animate = () => {
     const el = this.errorElement;
-    el.style.overflow = "hidden";
-    el.firstChild.style.transition =
-      "all 2s cubic-bezier(0.82, 0.02, 0.36, 1.02)";
-    el.style.transition = "all 2s cubic-bezier(0.82, 0.02, 0.36, 1.02)";
+    el.style.overflow = 'hidden';
+    el.style.transition = 'all 2s cubic-bezier(0.82, 0.02, 0.36, 1.02)';
 
-    el.style.opacity = "0";
-    el.style.transform = `translate(${this.left}, calc(${this.top}) + 20px)`;
-    this.ids.push(setTimeout(() => {
-      el.style.opacity = "1";
-      el.style.transform = `translate(${this.left}, calc(${this.top}) + 0)`;
-    }, 100))
-    this.ids.push(setTimeout(() => {
-      el.style.transform = `translate(${this.left}, calc(${this.top}) + 0)`;
-    }, 4000));
-    this.ids.push(setTimeout(() => {
-      el.style.opacity = "0";
-      el.style.transform = `translate(${this.left}, calc(${this.top}) + 20px)`;
-      this.running = false;
-    }, 4400));
+    el.style.opacity = '0';
+    this.ids.push(
+      setTimeout(() => {
+        el.style.opacity = '1';
+      }, 100)
+    );
+    this.ids.push(
+      setTimeout(() => {
+        el.style.opacity = '0';
+      }, 4000)
+    );
   };
   addClass = (div, text) => {
     if (div) this.errorElement.classList.add(...div);
